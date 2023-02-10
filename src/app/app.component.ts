@@ -1,19 +1,20 @@
-import { Component } from '@angular/core';
+import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  // template:`<input >
-  //   <button class="btn btn-primary">click</button>`,
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  // encapsulation:ViewEncapsulation.None
 })
 export class AppComponent {
+  
   title = 'angular-app';
-  asd = false;
-  constructor(){
-    setTimeout(()=>{this.asd=true},2000)
-  }
+
+  asd = true;
   onClickHandler(evt:Event){
-    console.log(evt)
+    console.log(this.title)
+  }
+  onChangeHandler(e:Event){
+    this.title = (e.currentTarget as HTMLInputElement).value;
   }
 }

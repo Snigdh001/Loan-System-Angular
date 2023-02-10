@@ -1,0 +1,48 @@
+<h1 >login Component</h1>
+<header class="bg-dark border-bottom shadow-sm">
+    <div class="container ">
+        <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4  ">
+
+            <h5 class="my-0 mr-md-auto font-weight-normal"><img src="../.././assets/images/logo.png"></h5>
+
+        </div>
+
+    </div>
+</header>
+
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="login-sec">
+            <h3 class="text-center pt-5 blue-heading ">Sign in to Your Account</h3>
+            <div class="card border-0 mt-4">
+                <div class="card-body border border-grey">
+                    <form  #formData="ngForm" (ngSubmit)="onSubmitHandler(formData.value)" >
+                        <div class="form-group mb-3">
+                            <label class="mb-1">Email or Mobile Number</label><input class="form-control "
+                                id="inputEmailAddress" type="email" name="email" placeholder="Enter Email Address" [(ngModel)]="email" />
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="mb-1">Password</label>
+                            <input class="form-control" id="inputPassword" name="password" type="password" [(ngModel)]="password"
+                                placeholder="Enter password" />
+                        </div>
+                        <div class="form-group d-flex justify-content-between">
+                            <div class="custom-control custom-checkbox">
+                                <input class="custom-control-input" id="rememberPasswordCheck" type="checkbox" />
+                                <label class="custom-control-label" for="rememberPasswordCheck">Remember
+                                    password</label>
+                            </div>
+                           
+                        </div>
+                        <div class="form-group  mt-4 mb-0">
+
+                            <button class="d-block btn btn-primary w-100" >Submit</button>
+                        </div>
+                        <a class="small d-block text-center mt-2 " href="password.html">Forgot Password?</a>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
