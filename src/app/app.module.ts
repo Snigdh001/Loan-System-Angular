@@ -8,6 +8,7 @@ import { LoginComponent } from './login/login.component';
 import {HttpClientModule} from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { NotfoundComponent } from './notfound/notfound.component';
+import { regValidation } from './validation';
 
 
 
@@ -24,8 +25,9 @@ import { NotfoundComponent } from './notfound/notfound.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    
   ],
-  providers: [],
+  providers: [regValidation],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

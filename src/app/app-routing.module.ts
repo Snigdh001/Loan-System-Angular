@@ -20,7 +20,6 @@ export const routes: Routes = [
   {
     path:'',
     redirectTo:'login',
-    // component:AppComponent,
     pathMatch:'full' 
   },
   {
