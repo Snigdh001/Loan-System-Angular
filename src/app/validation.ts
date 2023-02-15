@@ -106,15 +106,15 @@ export class regValidation {
 
     validateAll = (data: any) => {
         let count = 0
-        if (this.checkEmail(data.email))
+        if (data.email!=undefined &&this.checkEmail(data.email))
         count+=1
-        if (this.checkPass(data.password))
+        if (data.password!=undefined &&this.checkPass(data.password))
         count+=1
-        if (this.checkFname(data.fname))
+        if (data.fname!=undefined && this.checkFname(data.fname))
         count+=1
-        if (this.checkLname(data.lname))
+        if (data.lname!=undefined && this.checkLname(data.lname))
         count+=1
-        if (this.checkMob(data.mobile))
+        if (data.mobile!=undefined && this.checkMob(data.mobile))
         count+=1
         if (this.checkCpass(data.cpassword, data.password))
         count+=1

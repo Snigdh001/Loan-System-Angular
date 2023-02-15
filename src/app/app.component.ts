@@ -1,4 +1,5 @@
 import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
@@ -7,14 +8,26 @@ import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
   // encapsulation:ViewEncapsulation.None
 })
 export class AppComponent {
-  
-  title = 'angular-app';
 
-  asd = true;
-  onClickHandler(evt:Event){
-    console.log(this.title)
+  constructor(private toastr:ToastrService){this.status()}
+  loginStatus=false
+  status()
+  { console.log("Called")
+    const session= localStorage.getItem("Session")
+    if(session)
+    {
+      this.loginStatus=true
+      console.log(this.loginStatus)
+    }
   }
-  onChangeHandler(e:Event){
-    this.title = (e.currentTarget as HTMLInputElement).value;
+  logout()
+  { 
+
+    localStorage.removeItem('Session')
+    this.toastr.success('Logged Out Successfully', 'Success',{progressBar:true});
+    return true
   }
+
+
+
 }

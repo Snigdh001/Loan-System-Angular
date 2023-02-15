@@ -26,6 +26,7 @@ export class SignupComponent {
   
   onSubmitHandler(data:typeof signupInterface){
     let count=this.reg.validateAll(data)
+    console.log(count)
     if(data.cpassword===data.password && count===6)
     {
       const info={

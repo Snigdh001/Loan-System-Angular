@@ -6,25 +6,39 @@ import { SignupComponent } from './signup/signup.component';
 import { NotFoundError } from 'rxjs';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { AuthGuard } from './auth.guard';
+import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
+import { UserdashboardComponent } from './userdashboard/userdashboard.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
   {
-    component:SignupComponent,
-    canActivate:[AuthGuard],
     path:'signup',
+    component:SignupComponent,
   },
   {
+    path:'login',
     component:LoginComponent,
-    path:'login'
   },
   {
     path:'',
-    redirectTo:'login',
-    pathMatch:'full' 
+    pathMatch:'full',
+    component:HomeComponent,
   },
   {
-    component:NotfoundComponent,
+    path:'admin',
+    canActivate:[AuthGuard],
+    data: {role: 'admin'},
+    component:AdmindashboardComponent,
+  },
+  {
+    path:'user',
+    canActivate:[AuthGuard],
+    data: {role: 'user'},
+    component:UserdashboardComponent,
+  },
+  {
     path:'**',
+    component:NotfoundComponent,
     
   }
 ];
