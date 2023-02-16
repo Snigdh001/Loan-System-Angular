@@ -2,9 +2,10 @@
     <div class="container ">
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 text-capitalize " >
             <h5 class="my-0 mr-md-auto font-weight-normal"><img src="../assets/images/loanlogo.png" [routerLink]="['']" style="height: 80px; border-radius: 100%;  "></h5>
-            <a class="m-1 p-3" [routerLink]="['signup']" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >sign up</a>
-            <a class="m-1 p-3" [routerLink]="['login']" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >login</a>
-            <a class="m-1 p-3" [routerLink]="['']" ngClass="{'d-none':!loginStatus}" (click)="logout()" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Log Out</a>
+            <div class=" m-2 p-2"><a *ngIf="loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 25px; ">{{name}}</a></div>
+            <a class="m-1 p-3" [routerLink]="['signup']" *ngIf="!loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Sign up</a>
+            <a class="m-1 p-3" [routerLink]="['login']" *ngIf="!loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Login</a>
+            <a class="m-1 p-3" [routerLink]="['']" *ngIf="loginStatus" (click)="logout()" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Log Out</a>
         </div>
     </div>
 </header>

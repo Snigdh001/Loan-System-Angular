@@ -9,6 +9,7 @@ import { AuthGuard } from './auth.guard';
 import { AdmindashboardComponent } from './admindashboard/admindashboard.component';
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { HomeComponent } from './home/home.component';
+import { LoanApplicationComponent } from './loan-application/loan-application.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,12 @@ export const routes: Routes = [
     canActivate:[AuthGuard],
     data: {role: 'admin'},
     component:AdmindashboardComponent,
+  },
+  {
+    path:'admin/loanApplication',
+    canActivate:[AuthGuard],
+    data: {role: 'admin'},
+    component:LoanApplicationComponent,
   },
   {
     path:'user',

@@ -3,7 +3,7 @@ export class regValidation {
     constructor() { }
     
     emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{1,5}$/i;
-    passregex = /^[A-Za-z0-9!@#$%^&*()_]{5,16}$/i;
+    passregex = /^[A-Za-z0-9!@#$%^&*()_]{6,16}$/i;
     phoneregex = /^[1-9]{1}[0-9]{9}$/i;
     nameregex = /^[a-zA-Z]{3,16}$/i;
     checkEmail(email: string) {

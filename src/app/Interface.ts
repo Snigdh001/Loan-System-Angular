@@ -15,3 +15,17 @@ export const errorInterface= {
     passwordEr:"",
     cpasswordEr:"",
     }
+export const allUserRes ={
+        id: '',
+      fname: '',
+      lname:'',
+      email:'',
+      mobile:'',
+      role:'',
+      }
+export interface allUserApi {
+        status: number,
+      error: string,
+      data:typeof allUserRes[],
+      totalpages:number,
+      }

@@ -14,6 +14,7 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
 import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoanApplicationComponent } from './loan-application/loan-application.component';
 
 
 
@@ -26,6 +27,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AdmindashboardComponent,
     UserdashboardComponent,
     HomeComponent,
+    LoanApplicationComponent,
   ],
   
   imports: [
