@@ -36,4 +36,7 @@ export class AuthService {
   updateStatus(data:any) {
     return this.http.post<any>(this.baseurl+`/loanAction`,data)
   }
+  deleteUser(id:any=null) {
+    return this.http.delete<any>(this.baseurl+`/deleteuser/${id}`)
+  }
 }

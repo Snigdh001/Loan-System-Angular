@@ -162,11 +162,14 @@
                                         <td scope="row">{{user.income}}</td>
                                         <td scope="row">{{user.status}}</td>
                                         <td scope="row"><a class="btn btn-primary" data-bs-toggle="modal"
-                                                href="#exampleModalToggle" role="button" style="color: black;" (click)="currentDetail(user)" >Show
+                                                href="#exampleModalToggle" role="button" style="color: black;"
+                                                (click)="currentDetail(user)">Show
                                                 Details</a></td>
 
 
-                                        <div class="modal fade" id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+                                        <div class="modal fade" id="exampleModalToggle"
+                                            aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+                                            style="display: none;" aria-hidden="true">
                                             <div class="modal-dialog modal-lg">
 
 
@@ -183,17 +186,20 @@
                                                             <div class="container text text-capitalize">
                                                                 <div class="row m-1 p-1 f-18 ">
                                                                     <div class="col ">
-                                                                        Application Id : {{currentdata.id}} 
-                                                                        <input type="hidden" name="id"  ngModel="{{currentdata.id}}">
+                                                                        Application Id : {{currentdata.id}}
+                                                                        <input type="hidden" name="id"
+                                                                            ngModel="{{currentdata.id}}">
                                                                     </div>
                                                                     <div class="col">
                                                                         User Id : {{currentdata.userid}}
-                                                                        <input type="hidden" name="userid"  ngModel="{{currentdata.userid}}">
+                                                                        <input type="hidden" name="userid"
+                                                                            ngModel="{{currentdata.userid}}">
                                                                     </div>
                                                                 </div>
                                                                 <div class="row m-1 p-1 f-18">
                                                                     <div class="col">
-                                                                        Name : {{currentdata.fname+' '+currentdata.lname}}
+                                                                        Name : {{currentdata.fname+'
+                                                                        '+currentdata.lname}}
                                                                     </div>
                                                                     <div class="col">
                                                                         Gender : {{currentdata.gender}}
@@ -233,7 +239,7 @@
                                                                 </div>
                                                                 <div class="row m-1 p-1 f-18">
                                                                     <div class="col">
-                                                                        Address : {{currentdata.address1+', '+currentdata.address2}}
+                                                                        Address : {{currentdata.address1+','+currentdata.address2}}
                                                                     </div>
                                                                     <div class="col">
                                                                         Place : {{currentdata.place}}
@@ -256,28 +262,35 @@
                                                                         Status:{{currentdata.status}}
                                                                     </div>
                                                                 </div>
-                                                                <div class=" row mt-2" >
+                                                                <div class=" row ">
                                                                     <div class="col">
-                                                                        <select name="status" 
+                                                                        <div class="m-2 p-2 f-18">
+                                                                            Status : 
+                                                                        </div>
+                                                                        <select name="status"
                                                                             class="select form-control m-2 p-2"
-                                                                             ngModel="{{currentdata.status}}" id="status" >
+                                                                            ngModel="{{currentdata.status}}"
+                                                                            id="status">
                                                                             <option value="pending">Pending</option>
                                                                             <option value="approved">Approved</option>
                                                                             <option value="rejected">Rejected</option>
                                                                         </select>
                                                                     </div>
                                                                     <div class="col">
-                                                                        <textarea  name="remark"
-                                                                            id="remark" cols={50} rows={50}
-                                                                            style="width: 90%;border-radius: 10px;padding: 2%;" ngModel="{{currentdata.remark}}" > </textarea >
+                                                                        <div class="m-2 p-2 f-18">Review : </div>
+                                                                        <textarea  name="remark" id="remark" cols={50}
+                                                                            rows={50}
+                                                                            style="width: 90%;border-radius: 10px;padding: 2%;"
+                                                                            ngModel="{{currentdata.remark}}"> </textarea>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                         </div>
 
                                                         <div class="modal-footer">
-                                                            <button type="submit"  data-bs-target="#exampleModalToggle"
-                                                            data-bs-toggle="modal" class="btn btn-warning">Update</button>
+                                                            <button type="submit" data-bs-target="#exampleModalToggle"
+                                                                data-bs-toggle="modal"
+                                                                class="btn btn-warning">Update</button>
                                                             <button type="button" class="btn btn-danger"
                                                                 data-bs-target="#exampleModalToggle"
                                                                 data-bs-toggle="modal">Cancel</button>

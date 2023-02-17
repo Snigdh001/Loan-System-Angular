@@ -26,6 +26,7 @@ export class AdmindashboardComponent implements OnInit {
   recordLimit = 10
   pageRange: any = []
   key = ""
+  currentid=""
   
   noOfPage() // Generating Array for Pagination
   {
@@ -56,11 +57,15 @@ export class AdmindashboardComponent implements OnInit {
 
   }
   onSearch(key: any) {
-    console.log(this.page, this.recordLimit, key['keyWord'])
     this.key = key['keyWord']
     this.auth.search(this.page, this.recordLimit, key['keyWord']).subscribe(res => {
       this.data = res, this.totalpages = res.totalpages, this.noOfPage(), this.page = 1
     })
+  }
+  deleteUser(){
+    this.auth.deleteUser(this.currentid).subscribe(res =>{console.log(res)})
+    window.location.reload()
+
   }
   ExportToCsv() {
     const options = {

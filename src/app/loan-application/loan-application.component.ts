@@ -55,7 +55,7 @@ export class LoanApplicationComponent {
 
   }
   onSearchApplication(key: any) {
-    console.log(this.page, this.recordLimit, key['keyWord'])
+
     this.key = key['keyWord']
     this.auth.searchApplcation(this.page, this.recordLimit, key['keyWord']).subscribe(res => {
       this.data = res, this.totalpages = res.totalpages, this.noOfPage(), this.page = 1
@@ -76,10 +76,10 @@ export class LoanApplicationComponent {
   }
   UpdateStatus(data:any)
   {
-    console.log(data)
+    
 
     this.auth.updateStatus(data).subscribe(res =>{console.log(res)})
-    // this.onSearchApplication()
+    window.location.reload()
   }
   currentDetail(data:any){
     this.currentdata=data
