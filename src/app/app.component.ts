@@ -1,10 +1,11 @@
+import { style } from '@angular/animations';
 import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['./app.component.css','../../src/assets/css/bootstrap.min.css','../../src/assets/css/boxicons.min.css','../../src/assets/css/style.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {

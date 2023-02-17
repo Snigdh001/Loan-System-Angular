@@ -1,1 +1,327 @@
-<p>loan-application works!</p>
+<body id="body">
+
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+
+        <!--sidebar-->
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
+            <!-- logo -->
+            <a class="sidebar-brand d-flex align-items-center">
+                <div class="sidebar-brand-icon rotate-n-15">
+                    <img src="../../assets/images/logo.png" class="logo1" />
+                    <img src="../../assets/images/logo-small.png" class="logo2" />
+                </div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0" />
+
+            <!-- Nav Item - Dashboard -->
+            <!-- <li class="nav-item active">
+                <a class="nav-link" href="home.php">
+                    <i class='bx bx-chalkboard'></i>
+                    <span>Dashboard</span></a>
+            </li> -->
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link active" data-bs-toggle="collapse" data-bs-target="#home-collapse"
+                    aria-expanded="true">
+                    <i class='bx bx-spreadsheet'></i>
+                    <span>Admin</span>
+                </a>
+                <div class="collapse show" id="home-collapse">
+                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <li> <a [routerLink]="['/admin']"> <span>Register User</span> </a></li>
+                        <li><a [routerLink]="['/admin/loanApplication']">Application List</a></li>
+                    </ul>
+
+                </div>
+            </li>
+
+
+
+        </ul>
+        <!--sodebar-close-->
+
+
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+
+            <!-- Main Content -->
+            <div id="content">
+
+
+                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-3 static-top ">
+                    <!-- Sidebar Toggle (Topbar) -->
+                    <button id="sidebarToggleTop" class="btn btn-link  rounded-circle mr-3" (click)="toggle()">
+                        <i class='bx bx-menu'></i>
+                    </button>
+
+                    <!-- Topbar Search -->
+                    <form class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search" #formData="ngForm"
+                        (ngSubmit)="onSearchApplication(formData.value)">
+                        <div class="input-group search-group ">
+                            <div class="search-icon">
+                                <i class='bx bx-search'></i>
+                            </div>
+                            <input type="text" name="keyWord" class="form-control border-0 small"
+                                placeholder="Search Here" ngModel />
+                            <button class="btn search-btn">Search</button>
+
+                        </div>
+                    </form>
+
+                    <!-- Topbar Navbar -->
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+                        <li class="nav-item dropdown no-arrow d-sm-none">
+                            <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-search fa-fw"></i>
+                            </a>
+                            <!-- Dropdown - Messages -->
+                            <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                                aria-labelledby="searchDropdown">
+                                <form class="form-inline mr-auto w-100 navbar-search">
+                                    <div class="input-group">
+                                        <input type="text" class="form-control bg-light border-0 small"
+                                            placeholder="Search for..." aria-label="Search"
+                                            aria-describedby="basic-addon2" />
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button">
+                                                <i class="fas fa-search fa-sm"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </li>
+
+
+
+
+
+                    </ul>
+                </nav>
+
+
+                <!-- home-Page-Content -->
+
+                <!--Close-filter-sec -->
+
+
+
+                <!--table-sec-->
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!--pagination-->
+                        <div class=" align-items-center justify-content-end mb-3">
+
+
+
+                            <!--close-pagination-->
+
+                            <table class="table table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">S.No</th>
+                                        <th scope="col">ID</th>
+                                        <th scope="col">User Id</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Email</th>
+                                        <th scope="col">Amount</th>
+                                        <th scope="col">Duration</th>
+                                        <th scope="col">Salary</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <!-- <thead >
+                                    <tr>
+                                        <th scope="col" >S.no</th>
+                                        <th scope="col"><button style="border: none;background: white; "type="submit" name="id" value="asc" id="id" > ID</button></th>
+                                        <th scope="col"><button style="border: none;background: white; " type="submit"  name="fname" value="asc" id="fname" > Name</button></th>
+                                        <th scope="col"><button style="border: none;background: white; "type="submit" name="email" value="asc" id="email"  >Email</button></th>
+                                        <th scope="col"><button style="border: none;background: white; "type="submit" name="mobile" value="asc" id="mobile" > Mobile</button></th>
+                                        <th scope="col" >Role</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead> -->
+                                <tbody>
+                                    <tr *ngFor="let user of data?.data; let i=index">
+
+                                        <th scope="row">{{(page-1)*recordLimit+i+1}}</th>
+                                        <th scope="row">{{user.id}}</th>
+                                        <th scope="row">{{user.userid}}</th>
+                                        <td scope="row">{{user.fname+' '+user.lname}}</td>
+                                        <td scope="row">{{user.email}}</td>
+                                        <td scope="row">{{user.loanAmt}}</td>
+                                        <td scope="row">{{user.duration}}</td>
+                                        <td scope="row">{{user.income}}</td>
+                                        <td scope="row">{{user.status}}</td>
+                                        <td scope="row"><a class="btn btn-primary" data-bs-toggle="modal"
+                                                href="#exampleModalToggle" role="button" style="color: black;" (click)="currentDetail(user)" >Show
+                                                Details</a></td>
+
+
+                                        <div class="modal fade" id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1" style="display: none;" aria-hidden="true">
+                                            <div class="modal-dialog modal-lg">
+
+
+                                                <form #userdata="ngForm" (ngSubmit)="UpdateStatus(userdata.value)">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+                                                                Info
+                                                            </h1>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <div class="container text text-capitalize">
+                                                                <div class="row m-1 p-1 f-18 ">
+                                                                    <div class="col ">
+                                                                        Application Id : {{currentdata.id}} 
+                                                                        <input type="hidden" name="id"  ngModel="{{currentdata.id}}">
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        User Id : {{currentdata.userid}}
+                                                                        <input type="hidden" name="userid"  ngModel="{{currentdata.userid}}">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18">
+                                                                    <div class="col">
+                                                                        Name : {{currentdata.fname+' '+currentdata.lname}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Gender : {{currentdata.gender}}
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18 ">
+                                                                    <div class="col">
+                                                                        Email : {{currentdata.email}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Mobile No. : {{currentdata.mobile}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18">
+                                                                    <div class="col">
+                                                                        Aadhar Number : {{currentdata.aadhar}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Pan Number : {{currentdata.pan}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18">
+                                                                    <div class="col">
+                                                                        Loan Amount : {{currentdata.loanAmt}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Duration : {{currentdata.duration +" Months"}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18">
+                                                                    <div class="col">
+                                                                        Income : {{currentdata.income}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18">
+                                                                    <div class="col">
+                                                                        Address : {{currentdata.address1+', '+currentdata.address2}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Place : {{currentdata.place}}
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="row m-1 p-1 f-18">
+                                                                    <div class="col">
+                                                                        Pincode : {{currentdata.pincode}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        State : {{currentdata.state}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class="row m-1 p-1 f-18">
+                                                                    <div class="col">
+                                                                        Country : {{currentdata.country}}
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        Status:{{currentdata.status}}
+                                                                    </div>
+                                                                </div>
+                                                                <div class=" row mt-2" >
+                                                                    <div class="col">
+                                                                        <select name="status" 
+                                                                            class="select form-control m-2 p-2"
+                                                                             ngModel="{{currentdata.status}}" id="status" >
+                                                                            <option value="pending">Pending</option>
+                                                                            <option value="approved">Approved</option>
+                                                                            <option value="rejected">Rejected</option>
+                                                                        </select>
+                                                                    </div>
+                                                                    <div class="col">
+                                                                        <textarea  name="remark"
+                                                                            id="remark" cols={50} rows={50}
+                                                                            style="width: 90%;border-radius: 10px;padding: 2%;" ngModel="{{currentdata.remark}}" > </textarea >
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="modal-footer">
+                                                            <button type="submit"  data-bs-target="#exampleModalToggle"
+                                                            data-bs-toggle="modal" class="btn btn-warning">Update</button>
+                                                            <button type="button" class="btn btn-danger"
+                                                                data-bs-target="#exampleModalToggle"
+                                                                data-bs-toggle="modal">Cancel</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <!--pagination-->
+                            <div class="d-flex align-items-center justify-content-end">
+                                <div class="csv border-end me-3 pe-3 d-flex align-items-center">
+                                    <a class="d-flex text-decoration-none text-dark me-2" (click)="ExportToCsv()"><img
+                                            src="../../assets/images/excel-file.svg"> Export CSV </a>
+                                </div>
+
+                                <select style="width: auto;" class="form-select me-2 page-count"
+                                    (change)="setRecordLimit($event)">
+                                    <option value="5">5</option>
+                                    <option value="10">10</option>
+                                    <option value="20">20</option>
+                                    <!-- <option value="20">20</option> -->
+                                </select>
+
+
+                                <li class="pagination mb-0" *ngFor="let i of pageRange">
+                                    <a class="page-link  rounded-3 me-3" (click)="setPageNo(i)">{{i}}</a>
+                                </li>
+
+                            </div>
+                            <!--close-pagination-->
+                        </div>
+                    </div>
+                    <!--close-table-sec-->
+
+
+
+                </div>
+                <!--Close-home-Page-Content -->
+
+            </div>
+
+        </div>
+    </div>

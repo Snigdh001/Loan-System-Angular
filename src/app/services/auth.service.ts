@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { allUserApi, allUserRes } from '../Interface';
+import { allApplicationApi, allUserApi, allUserRes } from '../Interface';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,5 +26,14 @@ export class AuthService {
   allRegisterUser(page:number,record:number) {
     return this.http.get<allUserApi>(this.baseurl+`/allusers?page=${page}&recordlimit=${record}`,{headers:{
       'Authorization': this.getToken()}})
+  }
+  search(page:number=1,record:number=10,key:string) {
+    return this.http.get<allUserApi>(this.baseurl+`/search?page=${page}&recordlimit=${record}&keyWord=${key}`)
+  }
+  searchApplcation(page:number=1,record:number=5,key:string='') {
+    return this.http.get<allApplicationApi>(this.baseurl+`/searchApplication?page=${page}&recordlimit=${record}&keyWord=${key}`)
+  }
+  updateStatus(data:any) {
+    return this.http.post<any>(this.baseurl+`/loanAction`,data)
   }
 }

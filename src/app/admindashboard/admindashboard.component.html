@@ -4,7 +4,7 @@
     <div id="wrapper">
 
         <!--sidebar-->
-        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar" >
+        <ul class="navbar-nav sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- logo -->
             <a class="sidebar-brand d-flex align-items-center">
                 <div class="sidebar-brand-icon rotate-n-15">
@@ -33,13 +33,13 @@
                 <div class="collapse show" id="home-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                         <li> <a [routerLink]="['/admin']"> <span>Register User</span> </a></li>
-                        <li><a [routerLink]="['/admin/loanApplication']">ApplicationList</a></li>
+                        <li><a [routerLink]="['/admin/loanApplication']">Application List</a></li>
                     </ul>
 
                 </div>
             </li>
 
-            
+
 
         </ul>
         <!--sodebar-close-->
@@ -59,12 +59,14 @@
                     </button>
 
                     <!-- Topbar Search -->
-                    <form class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search">
+                    <form class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search" #formData="ngForm"
+                        (ngSubmit)="onSearch(formData.value)">
                         <div class="input-group search-group ">
                             <div class="search-icon">
                                 <i class='bx bx-search'></i>
                             </div>
-                            <input type="text" class="form-control border-0 small" placeholder="Search for" />
+                            <input type="text" name="keyWord" class="form-control border-0 small"
+                                placeholder="Search Here" ngModel />
                             <button class="btn search-btn">Search</button>
 
                         </div>
@@ -146,7 +148,7 @@
                                 </thead> -->
                                 <tbody>
                                     <tr *ngFor="let user of data?.data; let i=index">
-                                        
+
                                         <th scope="row">{{(page-1)*recordLimit+i+1}}</th>
                                         <th scope="row">{{user.id}}</th>
                                         <td scope="row">{{user.fname+' '+user.lname}}</td>
@@ -162,21 +164,23 @@
                             <!--pagination-->
                             <div class="d-flex align-items-center justify-content-end">
                                 <div class="csv border-end me-3 pe-3 d-flex align-items-center">
-                                    <a  class="d-flex text-decoration-none text-dark me-2" (click)="ExportToCsv()"><img src="../../assets/images/excel-file.svg" > Export CSV </a>   
+                                    <a class="d-flex text-decoration-none text-dark me-2" (click)="ExportToCsv()"><img
+                                            src="../../assets/images/excel-file.svg"> Export CSV </a>
                                 </div>
 
-                                <select style="width: auto;" class="form-select me-2 page-count" (change)="setRecordLimit($event)">
+                                <select style="width: auto;" class="form-select me-2 page-count"
+                                    (change)="setRecordLimit($event)">
                                     <option value="10">10</option>
-                                    <option value="20">20</option>
-                                    <option value="50">50</option>
+                                    <option *ngIf="totalpages>1" value="20">20</option>
+                                    <option *ngIf="totalpages>5" value="50">50</option>
                                     <!-- <option value="20">20</option> -->
                                 </select>
 
-                                
+
                                 <li class="pagination mb-0" *ngFor="let i of pageRange">
                                     <a class="page-link  rounded-3 me-3" (click)="setPageNo(i)">{{i}}</a>
                                 </li>
-                                
+
                             </div>
                             <!--close-pagination-->
                         </div>
