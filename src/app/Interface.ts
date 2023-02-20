@@ -23,6 +23,26 @@ export const allUserRes = {
   mobile: '',
   role: '',
 }
+export const loanError={
+  idEr: "",
+  useridEr: "",
+  fnameEr: "",
+  lnameEr: "",
+  emailEr: "",
+  genderEr: "",
+  aadharEr: "",
+  panEr: "",
+  professionEr: "",
+  incomeEr: "",
+  loanAmtEr: "",
+  durationEr: "",
+  address1Er: "",
+  address2Er: "",
+  pincodeEr: "",
+  placeEr: "",
+  stateEr: "",
+  countryEr: "",
+}
 export const allApplicationRes = {
   id: "",
   userid: "",

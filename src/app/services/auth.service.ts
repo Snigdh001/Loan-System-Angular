@@ -33,10 +33,13 @@ export class AuthService {
   searchApplcation(page:number=1,record:number=5,key:string='') {
     return this.http.get<allApplicationApi>(this.baseurl+`/searchApplication?page=${page}&recordlimit=${record}&keyWord=${key}`)
   }
-  updateStatus(data:any) {
-    return this.http.post<any>(this.baseurl+`/loanAction`,data)
+   updateStatus(data:any) {
+    return  this.http.post<any>(this.baseurl+`/loanAction`,data)
   }
   deleteUser(id:any=null) {
-    return this.http.delete<any>(this.baseurl+`/deleteuser/${id}`)
+    return  this.http.delete<any>(this.baseurl+`/deleteuser/${id}`)
+  }
+  ApplyLoan(data:JSON) {
+    return  this.http.post<any>(this.baseurl+'/loanapply',data)
   }
 }

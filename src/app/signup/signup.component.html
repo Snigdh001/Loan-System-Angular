@@ -7,7 +7,7 @@
                     <form  #formData="ngForm" (ngSubmit)="onSubmitHandler(formData.value)" >
                         <div class="form-group mb-3">
                             <label class="mb-1">First Name</label>
-                            <input class="form-control "id="inputFname" type="text" name="fname" placeholder="Enter First Name" ngModel (input)="resetEr('fnameEr')" />
+                            <input class="form-control" id="inputFname" type="text" name="fname" placeholder="Enter First Name" ngModel (input)="resetEr('fnameEr')" />
                             <p class="m-2 text-danger">{{Errordata.errorInterface.fnameEr}}</p>
                         </div>
                         <div class="form-group mb-3">

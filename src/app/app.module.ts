@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoanApplicationComponent } from './loan-application/loan-application.component';
+import { ApplyloanComponent } from './applyloan/applyloan.component';
 
 
 
@@ -28,6 +29,7 @@ import { LoanApplicationComponent } from './loan-application/loan-application.co
     UserdashboardComponent,
     HomeComponent,
     LoanApplicationComponent,
+    ApplyloanComponent,
   ],
   
   imports: [

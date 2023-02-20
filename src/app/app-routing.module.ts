@@ -10,6 +10,7 @@ import { AdmindashboardComponent } from './admindashboard/admindashboard.compone
 import { UserdashboardComponent } from './userdashboard/userdashboard.component';
 import { HomeComponent } from './home/home.component';
 import { LoanApplicationComponent } from './loan-application/loan-application.component';
+import { ApplyloanComponent } from './applyloan/applyloan.component';
 
 export const routes: Routes = [
   {
@@ -42,6 +43,12 @@ export const routes: Routes = [
     canActivate:[AuthGuard],
     data: {role: 'user'},
     component:UserdashboardComponent,
+  },
+  {
+    path:'user/applyloan',
+    canActivate:[AuthGuard],
+    data: {role: 'user'},
+    component:ApplyloanComponent,
   },
   {
     path:'**',

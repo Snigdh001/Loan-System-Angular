@@ -16,6 +16,7 @@ export class AuthGuard implements CanActivate {
     if(session){
       if(JSON.parse(session).role===route.data['role'])
         { 
+          console.log('logged in')
           return true
         }
       else

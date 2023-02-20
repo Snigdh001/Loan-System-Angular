@@ -13,15 +13,17 @@ export class AppComponent {
 
 
   loginStatus = false
-  name = "h"
+name=''
+  nameRole = 'user'
   status() {
     console.log("Called")
     const session = localStorage.getItem("Session")
     if (session) {
       const sessionData=JSON.parse(session)
-
+      
       this.loginStatus = sessionData.isLoggedin
-      this.name=sessionData.name   
+      this.name=sessionData.name
+      this.nameRole=sessionData.role
 
     }
     else

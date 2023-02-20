@@ -33,6 +33,8 @@ export class LoginComponent {
             id: res.messages.id,
             email:res.messages.email,
             name:res.messages.name,
+            fname:res.messages.fname,
+            lname:res.messages.lname,
             mobile:res.messages.mobile,
             role: res.messages.role,
             isLoggedin: res.messages.success,

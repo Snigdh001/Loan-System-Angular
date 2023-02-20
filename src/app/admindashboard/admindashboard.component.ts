@@ -33,6 +33,9 @@ export class AdmindashboardComponent implements OnInit {
     this.pageRange = []
     for (var i = 1; i <= this.totalpages; i++) { this.pageRange.push(i) }
   }
+  search(key=this.key,page=this.page,recordlimit=this.recordLimit,){
+
+  }
   toggle() //SideBAr Toggle
   {
     var element = document.getElementById("accordionSidebar");

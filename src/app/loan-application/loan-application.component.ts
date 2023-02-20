@@ -12,6 +12,7 @@ export class LoanApplicationComponent {
   constructor(private auth: AuthService) { }
   ngOnInit(): void {
     this.auth.searchApplcation(this.page, this.recordLimit, this.key).subscribe(res => { this.data = res, this.totalpages = res.totalpages, this.noOfPage() })
+
   }
   data: allApplicationApi = {
     status: 0,
@@ -74,12 +75,11 @@ export class LoanApplicationComponent {
     const csvExporter = new ExportToCsv(options);
     csvExporter.generateCsv(this.data.data);
   }
-  UpdateStatus(data:any)
+   UpdateStatus(data:any)
   {
-    
 
-    this.auth.updateStatus(data).subscribe(res =>{console.log(res)})
-    window.location.reload()
+     this.auth.updateStatus(data).subscribe(res =>{this.ngOnInit()})
+    
   }
   currentDetail(data:any){
     this.currentdata=data
