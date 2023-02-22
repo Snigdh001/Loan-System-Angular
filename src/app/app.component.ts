@@ -5,32 +5,41 @@ import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css','../../src/assets/css/bootstrap.min.css','../../src/assets/css/boxicons.min.css','../../src/assets/css/style.css'],
+  styleUrls: ['./app.component.css', '../../src/assets/css/bootstrap.min.css', '../../src/assets/css/boxicons.min.css', '../../src/assets/css/style.css'],
   encapsulation: ViewEncapsulation.None
 })
 export class AppComponent {
-    constructor(private toastr: ToastrService) { this.status() }
+  constructor(private toastr: ToastrService) { this.status() }
 
 
-  loginStatus = false
-name=''
-  nameRole = 'user'
+  sessionDetails={
+    
+    loginStatus : false,
+    name : '',
+    role : '',
+    email : '',
+    mobile:'',
+    id:''
+  }
   status() {
-    console.log("Called")
+    // console.log("Called")
     const session = localStorage.getItem("Session")
     if (session) {
-      const sessionData=JSON.parse(session)
-      
-      this.loginStatus = sessionData.isLoggedin
-      this.name=sessionData.name
-      this.nameRole=sessionData.role
+      const sessionData = JSON.parse(session)
+
+      this.sessionDetails.loginStatus = sessionData.isLoggedin
+      this.sessionDetails.name = sessionData.name
+      this.sessionDetails.role = sessionData.role
+      this.sessionDetails.email = sessionData.mobile
+      this.sessionDetails.mobile = sessionData.email
+      this.sessionDetails.id = sessionData.id
 
     }
     else
-      this.loginStatus = false
-
+      this.sessionDetails.loginStatus = false
   }
-  
+
+
   logout() {
     localStorage.removeItem('Session')
     this.toastr.success('Logged Out Successfully', 'Success', { progressBar: true });

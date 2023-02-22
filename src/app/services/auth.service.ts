@@ -42,4 +42,7 @@ export class AuthService {
   ApplyLoan(data:JSON) {
     return  this.http.post<any>(this.baseurl+'/loanapply',data)
   }
+  LoanApplicationById(userId:string) {
+    return  this.http.get<[]>(this.baseurl+`/allApplicationById?userId=${userId}`)
+  }
 }

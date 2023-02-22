@@ -11,6 +11,7 @@ import { UserdashboardComponent } from './userdashboard/userdashboard.component'
 import { HomeComponent } from './home/home.component';
 import { LoanApplicationComponent } from './loan-application/loan-application.component';
 import { ApplyloanComponent } from './applyloan/applyloan.component';
+import { UserLoanApplicationComponent } from './user-loan-application/user-loan-application.component';
 
 export const routes: Routes = [
   {
@@ -49,6 +50,12 @@ export const routes: Routes = [
     canActivate:[AuthGuard],
     data: {role: 'user'},
     component:ApplyloanComponent,
+  },
+  {
+    path:'user/myLoanApplication',
+    canActivate:[AuthGuard],
+    data: {role: 'user'},
+    component:UserLoanApplicationComponent,
   },
   {
     path:'**',

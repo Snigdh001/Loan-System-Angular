@@ -1,13 +1,45 @@
 <header class="bg-dark border-bottom shadow-sm">
     <div class="container ">
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 text-capitalize " >
-            <h5 class="my-0 mr-md-auto font-weight-normal"><img src="../assets/images/loanlogo.png" [routerLink]="[nameRole]" style="height: 80px; border-radius: 100%;  "></h5>
-            <div class=" m-2 p-2"><a *ngIf="loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 25px; ">{{name}}</a></div>
-            <a class="m-1 p-3" [routerLink]="['signup']" *ngIf="!loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Sign up</a>
-            <a class="m-1 p-3" [routerLink]="['login']" *ngIf="!loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Login</a>
-            <a class="m-1 p-3" [routerLink]="['']" *ngIf="loginStatus" (click)="logout()" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Log Out</a>
-            <a class="m-1 p-3" [routerLink]="['/user/applyloan']" *ngIf="loginStatus && nameRole==='user' "  style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Apply For Loan</a>
+            <h5 class="my-0 mr-md-auto font-weight-normal"><img src="../assets/images/loanlogo.png" [routerLink]="[this.sessionDetails.role]" style="height: 80px; border-radius: 100%;"></h5>
+            <div class=" m-2 p-2"><a *ngIf="this.sessionDetails.loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 25px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{{this.sessionDetails.name}}</a></div>
+            <a class="m-1 p-3" [routerLink]="['signup']" *ngIf="!this.sessionDetails.loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Sign up</a>
+            <a class="m-1 p-3" [routerLink]="['login']" *ngIf="!this.sessionDetails.loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Login</a>
+            <a class="m-1 p-3" [routerLink]="['']" *ngIf="this.sessionDetails.loginStatus" (click)="logout()" style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Log Out</a>
+            <a class="m-1 p-3" [routerLink]="['/user/applyloan']" *ngIf="this.sessionDetails.loginStatus && this.sessionDetails.role ==='user' "  style="text-decoration:  none; color: aliceblue;font-size: 20px;" >Apply For Loan</a>
+            <a class="m-1 p-3" [routerLink]="['/user/myLoanApplication']" *ngIf="this.sessionDetails.loginStatus && this.sessionDetails.role ==='user' "  style="text-decoration:  none; color: aliceblue;font-size: 20px;" >My Application</a>
         </div>
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                        <div style="display:flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <img src="https://source.unsplash.com/random/1920x1080" style="border-radius: 100%; width: 250px ; height: 250px ;"alt="" />
+                    </div>
+                    <div class="details" class="m-3 text-capitalize f-24">
+                        <div class="row">
+                            Name : {{this.sessionDetails.name}}
+                        </div>
+                        <div class="row">
+                            Email : {{this.sessionDetails.email}}
+                        </div>
+                        <div class="row">
+                            Mobile : {{this.sessionDetails.mobile}}
+                        </div>
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
     </div>
 </header>
+
 <router-outlet ></router-outlet>

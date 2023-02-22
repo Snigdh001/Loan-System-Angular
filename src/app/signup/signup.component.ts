@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { EmailValidator, FormControl, FormGroup, NgForm, Validators } from '@angular/forms';
 import { signupInterface, errorInterface } from '../Interface';
 import { regValidation } from '../validation';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,7 +15,7 @@ import { regValidation } from '../validation';
 
 
 export class SignupComponent {
-  constructor(private auth: AuthService, private router: Router, private reg: regValidation) { }
+  constructor(private auth: AuthService, private router: Router, private reg: regValidation,private toast:ToastrService) { }
   Errordata = { errorInterface }
   
   resetEr(name: string) {
@@ -35,15 +36,20 @@ export class SignupComponent {
       }
       this.auth.signUp(info).subscribe(res => {
         if (res.messages.success === 'true') {
-          console.log("Account Successful Created")
+          this.toast.success("Account Successful Created")
+          // console.log("Account Successful Created")
+
           this.router.navigate(["/login"])
         }
         else {
-          console.log("Account Already Exist")
+          this.toast.error("Account Already Exist")
+          // console.log("Account Already Exist")
         }
       })
     }
-    else { console.error("Failed") }
+    else {this.toast.error("Failed");
+    //  console.error("Failed")
+     }
 
   }
   
