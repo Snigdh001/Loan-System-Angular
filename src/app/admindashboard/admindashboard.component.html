@@ -155,51 +155,52 @@
                                         <td scope="row">{{user.email}}</td>
                                         <td scope="row">{{user.mobile}}</td>
                                         <td scope="row">{{user.role}}</td>
-                                        <td scope="row"><a *ngIf="user.role==='user'" class="btn btn-danger" data-bs-toggle="modal"
-                                            href="#exampleModalToggle" role="button" style="color: black;"
-                                            (click)="currentid=user.id">Delete</a>
-                                            <!-- <a *ngIf="user.role==='admin'" class="btn btn-danger" data-bs-toggle="modal"
-                                            href="#exampleModalToggle" role="button" style="color: black;"
-                                            (click)="currentid=user.id"></a> -->
-                                                <button *ngIf="user.role==='admin'" class="btn btn-secondary" disabled="disabled">Disabled</button>
+                                        <td scope="row"><a *ngIf="user.role==='user'" class="btn btn-danger"
+                                                data-bs-toggle="modal" href="#exampleModalToggle" role="button"
+                                                style="color: black;" (click)="currentid=user.id">Delete</a>
+
+                                            <button *ngIf="user.role==='admin'" class="btn btn-secondary"
+                                                disabled="disabled">Disabled</button>
                                             <div class="modal fade" id="exampleModalToggle"
-                                        aria-labelledby="exampleModalToggleLabel" tabindex="-1"
-                                        style="display: none;" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
+                                                aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+                                                style="display: none;" aria-hidden="true">
+                                                <div class="modal-dialog modal-lg">
 
 
-                                            <form #userdata="ngForm" (ngSubmit)="deleteUser()">
-                                                <div class="modal-content">
-                                                    <div class="modal-header">
-                                                        <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
-                                                            Delete
-                                                        </h1>
-                                                        <button type="button" class="btn-close"
-                                                            data-bs-dismiss="modal" aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="modal-body">
-                                                        <div class="container text text-capitalize">
-                                                            <div class="row m-1 p-1 f-18 ">
-                                                                <div class="col ">
-                                                                   Are You Sure ?
+                                                    <form #userdata="ngForm" (ngSubmit)="deleteUser()">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h1 class="modal-title fs-5"
+                                                                    id="exampleModalToggleLabel">
+                                                                    Delete
+                                                                </h1>
+                                                                <button type="button" class="btn-close"
+                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                            </div>
+                                                            <div class="modal-body">
+                                                                <div class="container text text-capitalize">
+                                                                    <div class="row m-1 p-1 f-18 ">
+                                                                        <div class="col ">
+                                                                            Are You Sure ?
+                                                                        </div>
+                                                                    </div>
+
                                                                 </div>
                                                             </div>
-                                                           
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="modal-footer">
-                                                        <button type="submit" data-bs-target="#exampleModalToggle"
-                                                            data-bs-toggle="modal"
-                                                            class="btn btn-danger">Delete</button>
-                                                        <button type="button" class="btn btn-danger"
-                                                            data-bs-target="#exampleModalToggle"
-                                                            data-bs-toggle="modal">Cancel</button>
-                                                    </div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit"
+                                                                    data-bs-target="#exampleModalToggle"
+                                                                    data-bs-toggle="modal"
+                                                                    class="btn btn-danger">Delete</button>
+                                                                <button type="button" class="btn btn-danger"
+                                                                    data-bs-target="#exampleModalToggle"
+                                                                    data-bs-toggle="modal">Cancel</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
                                                 </div>
-                                            </form>
-                                        </div>
-                                    </div>
+                                            </div>
                                     </tr>
                                 </tbody>
                             </table>
@@ -214,8 +215,8 @@
                                 <select style="width: auto;" class="form-select me-2 page-count"
                                     (change)="setRecordLimit($event)">
                                     <option value="10">10</option>
-                                    <option  value="20">20</option>
-                                    <option  value="50">50</option>
+                                    <option value="20">20</option>
+                                    <option value="50">50</option>
                                     <!-- <option value="20">20</option> -->
                                 </select>
 

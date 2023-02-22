@@ -15,12 +15,46 @@ export class UserLoanApplicationComponent {
   data :any = []
   currentid=""
   currentdata:any={}
+  wid=100;
   myApplcationRequest()
    {
     this.auth.LoanApplicationById(this.appObj.sessionDetails.id).subscribe(res =>{console.log(res); this.data=res})
    }
    currentDetail(data:any){
     this.currentdata=data
+  }
+  status()
+  {
+    switch(this.currentdata.status)
+    {
+      case 'pending':
+        this.wid=10
+        break
+      case 'approved':
+        this.wid=30
+        break
+      case 'pending':
+        this.wid=10
+        break
+      case 'rejected':
+        this.wid=20
+        break
+      case 'verification failed':
+          this.wid=40
+          break
+      case 'verified':
+        this.wid=50
+        break
+      case 'Sanctioned':
+        this.wid=70
+        break
+      case 'disbursed':
+        this.wid=90
+        break
+      case 'closed':
+          this.wid=100
+          break
+    }
   }
 }
 
