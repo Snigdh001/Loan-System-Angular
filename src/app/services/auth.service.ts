@@ -45,4 +45,8 @@ export class AuthService {
   LoanApplicationById(userId:string) {
     return  this.http.get<[]>(this.baseurl+`/allApplicationById?userId=${userId}`)
   }
+  emiCalculator(loanAmt:string,interest_rate:string,duration_years:string)
+  {
+    return this.http.get<any>('https://api.api-ninjas.com/v1/mortgagecalculator?loan_amount=100000&interest_rate=10&duration_years=10',{headers:{'X-Api-Key': 'jLhm4ii3StYojHxIHNN0ag==38QUXaD94DNQEPcO'}})
+  }
 }

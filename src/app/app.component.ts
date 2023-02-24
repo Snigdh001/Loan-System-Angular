@@ -1,5 +1,5 @@
 import { style } from '@angular/animations';
-import { Component, Input, Output, ViewEncapsulation } from '@angular/core';
+import { Component, Injectable, Input, Output, ViewEncapsulation } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -7,6 +7,9 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css', '../../src/assets/css/bootstrap.min.css', '../../src/assets/css/boxicons.min.css', '../../src/assets/css/style.css'],
   encapsulation: ViewEncapsulation.None
+})
+@Injectable({
+  providedIn: 'root'
 })
 export class AppComponent {
   constructor(private toastr: ToastrService) { this.status() }
@@ -37,6 +40,7 @@ export class AppComponent {
     }
     else
       this.sessionDetails.loginStatus = false
+      
   }
 
 

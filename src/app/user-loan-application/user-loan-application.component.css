@@ -50,9 +50,9 @@ body {
 
 .progresses ul li::after {
     position: absolute;
-    top: 35px;
-    left: -15px;
-    font-size: 1.2rem;
+    top: 36px;
+    left: -20px;
+    font-size: 1.0rem;
     width: 90px;
     /* margin-bottom: 50px; */
 }
@@ -63,11 +63,11 @@ body {
 
 #step-21::after {
     content: "Approved";
-    left: -5px;
+    
 }
 #step-22::after {
     content: "Rejected";
-    left: -5px;
+    
 }
 
 #step-32::after {
@@ -82,7 +82,6 @@ body {
 
 #step-5::after {
     content: "Disbursed";
-    left: -5px;
 }
 
 #step-6::after {
@@ -97,4 +96,3 @@ body {
     background-color: #f0f0f0;
     border-radius: 10px;
 }
-

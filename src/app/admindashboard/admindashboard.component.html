@@ -101,28 +101,29 @@
 
 
 
-
+                        
                     </ul>
                 </nav>
-
-
+                
+                
                 <!-- home-Page-Content -->
-
+                
                 <!--Close-filter-sec -->
-
-
-
+                
+                
+                
                 <!--table-sec-->
-                <div class="row">
-                    <div class="col-md-12">
+                <div class="table-responsive">
+                    <div class="row">
+                        <div class="col-md-12">
 
                         <!--pagination-->
                         <div class=" align-items-center justify-content-end mb-3">
 
-
-
+                            
+                            
                             <!--close-pagination-->
-
+                            
                             <table class="table table">
                                 <thead>
                                     <tr>
@@ -148,7 +149,7 @@
                                 </thead> -->
                                 <tbody>
                                     <tr *ngFor="let user of data?.data; let i=index">
-
+                                        
                                         <th scope="row">{{(page-1)*recordLimit+i+1}}</th>
                                         <th scope="row">{{user.id}}</th>
                                         <td scope="row">{{user.fname+' '+user.lname}}</td>
@@ -156,26 +157,26 @@
                                         <td scope="row">{{user.mobile}}</td>
                                         <td scope="row">{{user.role}}</td>
                                         <td scope="row"><a *ngIf="user.role==='user'" class="btn btn-danger"
-                                                data-bs-toggle="modal" href="#exampleModalToggle" role="button"
-                                                style="color: black;" (click)="currentid=user.id">Delete</a>
+                                            data-bs-toggle="modal" href="#exampleModalToggle" role="button"
+                                            style="color: black;" (click)="currentid=user.id">Delete</a>
 
                                             <button *ngIf="user.role==='admin'" class="btn btn-secondary"
-                                                disabled="disabled">Disabled</button>
+                                            disabled="disabled">Disabled</button>
                                             <div class="modal fade" id="exampleModalToggle"
                                                 aria-labelledby="exampleModalToggleLabel" tabindex="-1"
                                                 style="display: none;" aria-hidden="true">
                                                 <div class="modal-dialog modal-lg">
-
-
+                                                    
+                                                    
                                                     <form #userdata="ngForm" (ngSubmit)="deleteUser()">
                                                         <div class="modal-content">
                                                             <div class="modal-header">
                                                                 <h1 class="modal-title fs-5"
-                                                                    id="exampleModalToggleLabel">
-                                                                    Delete
-                                                                </h1>
+                                                                id="exampleModalToggleLabel">
+                                                                Delete
+                                                            </h1>
                                                                 <button type="button" class="btn-close"
-                                                                    data-bs-dismiss="modal" aria-label="Close"></button>
+                                                                data-bs-dismiss="modal" aria-label="Close"></button>
                                                             </div>
                                                             <div class="modal-body">
                                                                 <div class="container text text-capitalize">
@@ -190,12 +191,12 @@
 
                                                             <div class="modal-footer">
                                                                 <button type="submit"
-                                                                    data-bs-target="#exampleModalToggle"
-                                                                    data-bs-toggle="modal"
-                                                                    class="btn btn-danger">Delete</button>
+                                                                data-bs-target="#exampleModalToggle"
+                                                                data-bs-toggle="modal"
+                                                                class="btn btn-danger">Delete</button>
                                                                 <button type="button" class="btn btn-danger"
-                                                                    data-bs-target="#exampleModalToggle"
-                                                                    data-bs-toggle="modal">Cancel</button>
+                                                                data-bs-target="#exampleModalToggle"
+                                                                data-bs-toggle="modal">Cancel</button>
                                                             </div>
                                                         </div>
                                                     </form>
@@ -209,14 +210,14 @@
                             <div class="d-flex align-items-center justify-content-end">
                                 <div class="csv border-end me-3 pe-3 d-flex align-items-center">
                                     <a class="d-flex text-decoration-none text-dark me-2" (click)="ExportToCsv()"><img
-                                            src="../../assets/images/excel-file.svg"> Export CSV </a>
+                                        src="../../assets/images/excel-file.svg"> Export CSV </a>
                                 </div>
-
+                                
                                 <select style="width: auto;" class="form-select me-2 page-count"
-                                    (change)="setRecordLimit($event)">
-                                    <option value="10">10</option>
-                                    <option value="20">20</option>
-                                    <option value="50">50</option>
+                                (change)="setRecordLimit($event)">
+                                <option value="10">10</option>
+                                <option value="20">20</option>
+                                <option value="50">50</option>
                                     <!-- <option value="20">20</option> -->
                                 </select>
 
@@ -229,6 +230,7 @@
                             <!--close-pagination-->
                         </div>
                     </div>
+                </div>
                     <!--close-table-sec-->
 
 

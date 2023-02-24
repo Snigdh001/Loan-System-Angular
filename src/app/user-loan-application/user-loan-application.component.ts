@@ -23,6 +23,9 @@ export class UserLoanApplicationComponent {
    currentDetail(data:any){
     this.currentdata=data
   }
+  EmiCalculator(){
+    this.auth.emiCalculator("","","").subscribe(res =>{console.log(res)})
+  }
   status()
   {
     switch(this.currentdata.status)
@@ -45,7 +48,7 @@ export class UserLoanApplicationComponent {
       case 'verified':
         this.wid=50
         break
-      case 'Sanctioned':
+      case 'sanctioned':
         this.wid=70
         break
       case 'disbursed':
