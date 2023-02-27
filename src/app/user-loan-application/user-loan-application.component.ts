@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
-import { allUserApi } from '../Interface';
+import { allApplicationRes, allUserApi } from '../Interface';
 
 @Component({
   selector: 'app-user-loan-application',
@@ -12,16 +12,16 @@ export class UserLoanApplicationComponent {
 
 
   constructor( private auth:AuthService, private appObj:AppComponent){this.myApplcationRequest() }
-  data :any = []
+  data :typeof allApplicationRes[] =[]
   currentid=""
-  currentdata:any={}
+  currentdata:typeof allApplicationRes=allApplicationRes
   wid=100;
   myApplcationRequest()
    {
     this.auth.LoanApplicationById(this.appObj.sessionDetails.id).subscribe(res =>{console.log(res); this.data=res})
    }
-   currentDetail(data:any){
-    this.currentdata=data
+   currentDetail(clickedData:typeof allApplicationRes){
+    this.currentdata=clickedData
   }
   EmiCalculator(){
     this.auth.emiCalculator("","","").subscribe(res =>{console.log(res)})

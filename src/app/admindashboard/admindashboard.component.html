@@ -60,12 +60,12 @@
 
                     <!-- Topbar Search -->
                     <form class="form-inline me-auto ms-md-3 my-2 my-md-0 mw-100 navbar-search" #formData="ngForm"
-                        (ngSubmit)="onSearch(formData.value)">
+                        (ngSubmit)="onSearch(keyword.value)">
                         <div class="input-group search-group ">
                             <div class="search-icon">
                                 <i class='bx bx-search'></i>
                             </div>
-                            <input type="text" name="keyWord" class="form-control border-0 small"
+                            <input type="text" #keyword name="keyWord" class="form-control border-0 small"
                                 placeholder="Search Here" ngModel />
                             <button class="btn search-btn">Search</button>
 

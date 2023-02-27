@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { allApplicationApi, allUserApi, allUserRes } from '../Interface';
+import { allApplicationApi, allApplicationRes, allUserApi, allUserRes, signupInterface } from '../Interface';
+import { NgForm } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +18,7 @@ export class AuthService {
       return "NULL";
   }
 
-  login(data: any) {
+  login(data: NgForm) {
     return this.http.post<any>(this.baseurl + '/login', data)
   }
   signUp(data: any) {
@@ -39,7 +40,7 @@ export class AuthService {
   deleteUser(id:any=null) {
     return  this.http.delete<any>(this.baseurl+`/deleteuser/${id}`)
   }
-  ApplyLoan(data:JSON) {
+  ApplyLoan(data:typeof allApplicationRes) {
     return  this.http.post<any>(this.baseurl+'/loanapply',data)
   }
   LoanApplicationById(userId:string) {

@@ -3,6 +3,7 @@ import { AuthService } from '../services/auth.service';
 import { allUserApi, allUserRes } from "../Interface";
 import { range } from 'rxjs';
 import { ExportToCsv } from 'export-to-csv';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admindashboard',
@@ -24,7 +25,7 @@ export class AdmindashboardComponent implements OnInit {
   page = 1
   totalpages = 1
   recordLimit = 10
-  pageRange: any = []
+  pageRange: Array<number> = []
   key = ""
   currentid=""
   
@@ -59,9 +60,9 @@ export class AdmindashboardComponent implements OnInit {
     })
 
   }
-  onSearch(key: any) {
-    this.key = key['keyWord']
-    this.auth.search(this.page, this.recordLimit, key['keyWord']).subscribe(res => {
+  onSearch(key: string) {
+    this.key = key
+    this.auth.search(this.page, this.recordLimit, key).subscribe(res => {
       this.data = res, this.totalpages = res.totalpages, this.noOfPage(), this.page = 1
     })
   }

@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { allApplicationApi, allUserApi } from '../Interface';
+import { allApplicationApi, allApplicationRes, allUserApi } from '../Interface';
 import { AuthService } from '../services/auth.service';
 import { ExportToCsv } from 'export-to-csv';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-loan-application',
@@ -23,9 +24,9 @@ export class LoanApplicationComponent {
   page = 1
   totalpages = 1
   recordLimit = 5
-  pageRange: any = []
+  pageRange: Array<number> = []
   key = ""
-  currentdata:any={}
+  currentdata:typeof allApplicationRes=allApplicationRes
   
   noOfPage() // Generating Array for Pagination
   {
@@ -55,10 +56,10 @@ export class LoanApplicationComponent {
     })
 
   }
-  onSearchApplication(key: any) {
+  onSearchApplication(key: string) {
 
-    this.key = key['keyWord']
-    this.auth.searchApplcation(this.page, this.recordLimit, key['keyWord']).subscribe(res => {
+    this.key = key
+    this.auth.searchApplcation(this.page, this.recordLimit, key).subscribe(res => {
       this.data = res, this.totalpages = res.totalpages, this.noOfPage(), this.page = 1
     })
   }
@@ -75,13 +76,13 @@ export class LoanApplicationComponent {
     const csvExporter = new ExportToCsv(options);
     csvExporter.generateCsv(this.data.data);
   }
-   UpdateStatus(data:any)
+   UpdateStatus(data:NgForm)
   {
 
      this.auth.updateStatus(data).subscribe(res =>{this.ngOnInit()})
     
   }
-  currentDetail(data:any){
+  currentDetail(data:typeof allApplicationRes){
     this.currentdata=data
   }
 }

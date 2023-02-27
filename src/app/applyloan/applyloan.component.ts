@@ -4,7 +4,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
 import { regValidation } from '../validation';
 import { count } from 'rxjs';
-import { errorInterface, loanError } from '../Interface';
+import { allApplicationRes, errorInterface, loanError } from '../Interface';
 
 @Component({
   selector: 'app-applyloan',
@@ -15,21 +15,18 @@ export class ApplyloanComponent {
   constructor(private auth: AuthService, private toast: ToastrService, private navigater: Router, private reg: regValidation) {
     const Session = localStorage.getItem('Session')
     if (Session) {
-
-      this.userData = {
-        fname: JSON.parse(Session).fname,
-        lname: JSON.parse(Session).lname,
-        mobile: JSON.parse(Session).mobile,
-        email: JSON.parse(Session).email,
-        userid: JSON.parse(Session).id,
-      }
+      this.userData.fname =JSON.parse(Session).fname;
+      this.userData.lname =JSON.parse(Session).lname;
+      this.userData.email =JSON.parse(Session).email;
+      this.userData.mobile =JSON.parse(Session).mobile;
+      this.userData.userid =JSON.parse(Session).id;
     }
 
   }
   Errordata = { loanError }
-  userData: any = {}
+  userData: typeof allApplicationRes = allApplicationRes
 
-  onSubmitHandler(data: any) {
+  onSubmitHandler(data: typeof allApplicationRes) {
     data = { ...data, ...this.userData }
     let result = this.reg.validateAll(data)
     console.log(result)

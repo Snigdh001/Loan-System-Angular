@@ -24,7 +24,7 @@ export class LoginComponent {
     if (name == 'emailEr') errorInterface.emailEr = ""
     if (name == 'passwordEr') errorInterface.passwordEr = ""
   }
-  onSubmitHandler(data: any) {
+  onSubmitHandler(data: NgForm) {
     let count = this.reg.validateAll(data)
     if (count == 2) {
       this.auth.login(data).subscribe(res => {
