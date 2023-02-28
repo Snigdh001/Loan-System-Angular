@@ -66,6 +66,14 @@ export const allApplicationRes = {
   status: "",
   remark: ""
 }
+export const SessionInterface = {
+
+  userid: "",
+  fname: "",
+  lname: "",
+  email: "",
+  mobile: "",
+}
 export interface allUserApi {
   status: number,
   error: string,
@@ -79,4 +87,28 @@ export interface allApplicationApi {
   data: typeof allApplicationRes[],
   totalpages: number,
 }
-
+export interface requestRespnse {
+  status: number,
+  error: string,
+  success: string,
+  messages: string,
+}
+export interface delResponse {
+  id: string,
+  message: string,
+  success: string,
+}
+export interface authResponse {
+  messages: {
+    success: string,
+    message:string,
+    role:string,
+    id:string,
+    fname:string,
+    lname:string,
+    name:string,
+    email:string,
+    mobile:string,
+    authorization:string,
+  }
+}

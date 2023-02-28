@@ -1,5 +1,5 @@
 <div class="loanBody">
-    <form #formData="ngForm" method="post" (ngSubmit)="onSubmitHandler(formData.value)">
+    <form #formData="ngForm" (ngSubmit)="onSubmitHandler(formData.value)">
         <div class="apply_loan">
             <section class="h-100 "
                 style="height: 100% !important; background:linear-gradient(to right, rgba(161, 196, 253, 1), rgba(194, 233, 251, 1))">
@@ -72,7 +72,8 @@
                                                                     Number</label>
                                                                 <input name='aadhar' type="text" id="form3Examplev5"
                                                                     class="form-control form-control-lg" maxlength="12"
-                                                                    ngModel (input)="Errordata.loanError.aadharEr = ''" />
+                                                                    ngModel
+                                                                    (input)="Errordata.loanError.aadharEr = ''" />
                                                                 <p class="m-2 text-danger">
                                                                     {{Errordata.loanError.aadharEr}}</p>
                                                             </div>
@@ -86,7 +87,7 @@
                                                                     Number</label>
                                                                 <input name='pan' type="text" id="form3Examplev5"
                                                                     class="form-control form-control-lg " maxlength="10"
-                                                                    ngModel (input)="Errordata.loanError.panEr = ''"/>
+                                                                    ngModel (input)="Errordata.loanError.panEr = ''" />
                                                                 <p class="m-2 text-danger">
                                                                     {{Errordata.loanError.panEr}}</p>
                                                             </div>
@@ -136,7 +137,8 @@
                                                                 <label class="form-label" htmlFor="form3Examplev5">Loan
                                                                     Amount</label>
                                                                 <input name='loanAmt' type="text" id="form3Examplev5"
-                                                                    class="form-control form-control-lg" ngModel (input)="Errordata.loanError.loanAmtEr = ''"
+                                                                    class="form-control form-control-lg" ngModel
+                                                                    (input)="Errordata.loanError.loanAmtEr = ''"
                                                                     maxlength="8" />
                                                                 <p class="m-2 text-danger">
                                                                     {{Errordata.loanError.loanAmtEr}}</p>
@@ -151,7 +153,8 @@
                                                                     htmlFor="form3Examplev5">Duration (In month)</label>
                                                                 <input name='duration' type="text" id="form3Examplev5"
                                                                     class="form-control form-control-lg" maxlength="4"
-                                                                    ngModel (input)="Errordata.loanError.durationEr = ''"/>
+                                                                    ngModel
+                                                                    (input)="Errordata.loanError.durationEr = ''" />
                                                                 <p class="m-2 text-danger">
                                                                     {{Errordata.loanError.durationEr}}</p>
                                                             </div>
@@ -167,7 +170,8 @@
                                                 <div class="mb-4 pb-2">
                                                     <div class="form-outline form-white">
                                                         <input name='address1' type="text" id="form3Examplea2"
-                                                            class="form-control form-control-lg  cap" ngModel (input)="Errordata.loanError.address1Er = ''"/>
+                                                            class="form-control form-control-lg  cap" ngModel
+                                                            (input)="Errordata.loanError.address1Er = ''" />
                                                         <label class="form-label" htmlFor="form3Examplea2">Flat no. /
                                                             House No. + Street</label>
                                                         <strong
@@ -178,7 +182,8 @@
                                                 <div class="mb-4 pb-2">
                                                     <div class="form-outline form-white">
                                                         <input type="text" name='address2' id="form3Examplea3"
-                                                            class="form-control form-control-lg cap" ngModel (input)="Errordata.loanError.address2Er = ''"/>
+                                                            class="form-control form-control-lg cap" ngModel
+                                                            (input)="Errordata.loanError.address2Er = ''" />
                                                         <label class="form-label" htmlFor="form3Examplea3">Locality /
                                                             Area </label>
                                                         <strong
@@ -192,10 +197,12 @@
                                                         <div class="form-outline form-white">
                                                             <input type="text" name='pincode' id="form3Examplea4"
                                                                 class="form-control form-control-lg" maxlength="6"
-                                                                ngModel (input)="Errordata.loanError.pincodeEr = ''"/>
+                                                                ngModel (input)="Errordata.loanError.pincodeEr = ''" />
                                                             <label class="form-label" htmlFor="form3Examplea4">Zip
                                                                 Code</label>
-                                                            <p><strong class='text-danger p-2 m-2'>{{Errordata.loanError.pincodeEr}}</strong></p>
+                                                            <p><strong
+                                                                    class='text-danger p-2 m-2'>{{Errordata.loanError.pincodeEr}}</strong>
+                                                            </p>
                                                         </div>
 
                                                     </div>
@@ -204,10 +211,12 @@
                                                         <div class="form-outline form-white">
                                                             <input name='place' type="text" id="form3Examplea5"
                                                                 class="form-control form-control-lg cap" maxlength="30"
-                                                                ngModel (input)="Errordata.loanError.placeEr = ''"/>
+                                                                ngModel (input)="Errordata.loanError.placeEr = ''" />
                                                             <label class="form-label"
                                                                 htmlFor="form3Examplea5">Place</label>
-                                                            <p><strong class='text-danger p-2 m-2'>{{Errordata.loanError.placeEr}}</strong></p>
+                                                            <p><strong
+                                                                    class='text-danger p-2 m-2'>{{Errordata.loanError.placeEr}}</strong>
+                                                            </p>
                                                         </div>
 
                                                     </div>
@@ -217,7 +226,7 @@
                                                     <div class="form-outline form-white">
                                                         <input name='state' type="text" id="form3Examplea6"
                                                             class="form-control form-control-lg cap" maxlength="30"
-                                                            ngModel (input)="Errordata.loanError.stateEr = ''"/>
+                                                            ngModel (input)="Errordata.loanError.stateEr = ''" />
                                                         <label class="form-label" htmlFor="form3Examplea6">State</label>
                                                         <strong
                                                             class='text-danger p-2 m-2'>{{Errordata.loanError.stateEr}}</strong>
@@ -226,7 +235,8 @@
                                                 <div class="mb-4 pb-2">
                                                     <div class="form-outline form-white">
                                                         <input name='country' type="text" id="form3Examplea6"
-                                                            class="form-control form-control-lg cap" ngModel (input)="Errordata.loanError.countryEr = ''"/>
+                                                            class="form-control form-control-lg cap" ngModel
+                                                            (input)="Errordata.loanError.countryEr = ''" />
                                                         <label class="form-label"
                                                             htmlFor="form3Examplea6">Country</label>
                                                         <strong

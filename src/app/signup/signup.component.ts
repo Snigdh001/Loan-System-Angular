@@ -34,7 +34,7 @@ export class SignupComponent {
       const info = {
         fname: data.fname, lname: data.lname, email: data.email, mobile: data.mobile, password: data.password
       }
-      this.auth.signUp(info).subscribe(res => {
+      this.auth.signUp(data).subscribe(res => {
         if (res.messages.success === 'true') {
           this.toast.success("Account Successful Created")
           // console.log("Account Successful Created")

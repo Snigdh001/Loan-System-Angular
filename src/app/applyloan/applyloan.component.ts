@@ -4,7 +4,7 @@ import { Toast, ToastrService } from 'ngx-toastr';
 import { Route, Router } from '@angular/router';
 import { regValidation } from '../validation';
 import { count } from 'rxjs';
-import { allApplicationRes, errorInterface, loanError } from '../Interface';
+import { SessionInterface, allApplicationRes, errorInterface, loanError } from '../Interface';
 
 @Component({
   selector: 'app-applyloan',
@@ -24,7 +24,7 @@ export class ApplyloanComponent {
 
   }
   Errordata = { loanError }
-  userData: typeof allApplicationRes = allApplicationRes
+  userData: typeof SessionInterface= SessionInterface
 
   onSubmitHandler(data: typeof allApplicationRes) {
     data = { ...data, ...this.userData }

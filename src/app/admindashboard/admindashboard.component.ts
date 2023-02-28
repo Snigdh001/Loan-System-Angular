@@ -4,6 +4,7 @@ import { allUserApi, allUserRes } from "../Interface";
 import { range } from 'rxjs';
 import { ExportToCsv } from 'export-to-csv';
 import { NgForm } from '@angular/forms';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admindashboard',
@@ -12,7 +13,7 @@ import { NgForm } from '@angular/forms';
 
 })
 export class AdmindashboardComponent implements OnInit {
-  constructor(private auth: AuthService) { }
+  constructor(private auth: AuthService,private toast:ToastrService) { }
   ngOnInit(): void {
     this.auth.search(this.page, this.recordLimit, this.key).subscribe(res => { this.data = res, this.totalpages = res.totalpages, this.noOfPage() })
   }
@@ -67,9 +68,14 @@ export class AdmindashboardComponent implements OnInit {
     })
   }
   deleteUser(){
-    this.auth.deleteUser(this.currentid).subscribe(res =>{console.log(res)})
-    window.location.reload()
-
+    this.auth.deleteUser(this.currentid).subscribe(res =>{console.log(res)
+    if(res.success=='true')
+      this.toast.success('User Deleted SuccessFully');
+      setTimeout(function(){
+        window.location.reload()
+      },2000);
+    })
+    // window.location.reload(10000)
   }
   ExportToCsv() {
     const options = {

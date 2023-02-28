@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { allApplicationApi, allApplicationRes, allUserApi, allUserRes, signupInterface } from '../Interface';
+import { allApplicationApi, allApplicationRes, allUserApi, allUserRes, authResponse, delResponse, requestRespnse, signupInterface } from '../Interface';
 import { NgForm } from '@angular/forms';
 @Injectable({
   providedIn: 'root'
@@ -19,10 +19,10 @@ export class AuthService {
   }
 
   login(data: NgForm) {
-    return this.http.post<any>(this.baseurl + '/login', data)
+    return this.http.post<authResponse>(this.baseurl + '/login', data)
   }
-  signUp(data: any) {
-    return this.http.post<any>(this.baseurl + '/signup', data)
+  signUp(data: typeof signupInterface) {
+    return this.http.post<authResponse>(this.baseurl + '/signup', data)
   }
   allRegisterUser(page:number,record:number) {
     return this.http.get<allUserApi>(this.baseurl+`/allusers?page=${page}&recordlimit=${record}`,{headers:{
@@ -34,14 +34,14 @@ export class AuthService {
   searchApplcation(page:number=1,record:number=5,key:string='') {
     return this.http.get<allApplicationApi>(this.baseurl+`/searchApplication?page=${page}&recordlimit=${record}&keyWord=${key}`)
   }
-   updateStatus(data:any) {
-    return  this.http.post<any>(this.baseurl+`/loanAction`,data)
+   updateStatus(data:NgForm) {
+    return  this.http.post<requestRespnse>(this.baseurl+`/loanAction`,data)
   }
-  deleteUser(id:any=null) {
-    return  this.http.delete<any>(this.baseurl+`/deleteuser/${id}`)
+  deleteUser(id:string="") {
+    return  this.http.delete<delResponse>(this.baseurl+`/deleteuser/${id}`)
   }
   ApplyLoan(data:typeof allApplicationRes) {
-    return  this.http.post<any>(this.baseurl+'/loanapply',data)
+    return  this.http.post<requestRespnse>(this.baseurl+'/loanapply',data)
   }
   LoanApplicationById(userId:string) {
     return  this.http.get<[]>(this.baseurl+`/allApplicationById?userId=${userId}`)
