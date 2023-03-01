@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
 import { AppComponent } from '../app.component';
 import { allApplicationRes, allUserApi } from '../Interface';
@@ -8,26 +8,38 @@ import { allApplicationRes, allUserApi } from '../Interface';
   templateUrl: './user-loan-application.component.html',
   styleUrls: ['./user-loan-application.component.css']
 })
-export class UserLoanApplicationComponent {
+export class UserLoanApplicationComponent implements OnInit {
 
 
-  constructor( private auth:AuthService, private appObj:AppComponent){this.myApplcationRequest() }
+  constructor( private auth:AuthService, private appObj:AppComponent){
+    this.wid=0;
+  }
+  ngOnInit(): void {
+    this.myApplcationRequest(),
+    this.status() 
+
+      }
   data :typeof allApplicationRes[] =[]
   currentid=""
   currentdata:typeof allApplicationRes=allApplicationRes
-  wid=100;
+  wid:number;
   myApplcationRequest()
    {
     this.auth.LoanApplicationById(this.appObj.sessionDetails.id).subscribe(res =>{console.log(res); this.data=res})
    }
    currentDetail(clickedData:typeof allApplicationRes){
     this.currentdata=clickedData
+
   }
   EmiCalculator(){
-    this.auth.emiCalculator("","","").subscribe(res =>{console.log(res)})
+    this.auth.emiCalculator("",'10',0).subscribe(res =>{console.log(res)})
+  }
+  setLoanid(loanid:string)
+  {
+    localStorage.setItem("loanid",loanid)
   }
   status()
-  {
+  { console.log(this.wid)
     switch(this.currentdata.status)
     {
       case 'pending':
@@ -58,6 +70,7 @@ export class UserLoanApplicationComponent {
           this.wid=100
           break
     }
+    
   }
 }
 

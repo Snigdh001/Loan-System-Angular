@@ -1,32 +1,32 @@
 <div class="myApplication">
 
 
-<div class="allapplication " style="width: 80%; margin-left: 10%;">
-    <div class="row">
-        <div class="col-md-12">
+    <div class="allapplication " style="width: 80%; margin-left: 10%;">
+        <div class="row">
+            <div class="col-md-12">
 
-            <!--pagination-->
-            <div class=" align-items-center justify-content-end mb-3">
+                <!--pagination-->
+                <div class=" align-items-center justify-content-end mb-3">
 
 
 
-                <!--close-pagination-->
+                    <!--close-pagination-->
 
-                <table class="table table">
-                    <thead>
-                        <tr>
-                            <th scope="col">S.No</th>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Amount</th>
-                            <th scope="col">Duration</th>
-                            <th scope="col">Salary</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
-                    <!-- <thead >
+                    <table class="table table">
+                        <thead>
+                            <tr>
+                                <th scope="col">S.No</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Amount</th>
+                                <th scope="col">Duration</th>
+                                <th scope="col">Salary</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <!-- <thead >
                         <tr>
                         <th scope="col" >S.no</th>
                         <th scope="col"><button style="border: none;background: white; "type="submit" name="id" value="asc" id="id" > ID</button></th>
@@ -37,145 +37,155 @@
                         <th scope="col">Action</th>
                     </tr>
                 </thead> -->
-                    <tbody>
-                        <tr *ngFor="let user of data; let i=index">
+                        <tbody>
+                            <tr *ngFor="let user of data; let i=index">
 
-                            <th scope="row">{{i+1}}</th>
-                            <th scope="row">{{user.id}}</th>
-                            <td scope="row">{{user.fname+' '+user.lname}}</td>
-                            <td scope="row">{{user.email}}</td>
-                            <td scope="row">{{user.loanAmt}}</td>
-                            <td scope="row">{{user.duration}}</td>
-                            <td scope="row">{{user.income}}</td>
-                            <td scope="row">{{user.status}}</td>
-                            <td scope="row"><a class="btn btn-primary" data-bs-toggle="modal" href="#exampleModalToggle"
-                                    role="button" style="color: black;" (click)="currentDetail(user)">Show
-                                    Details</a></td>
-                            <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
-                                id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
-                                style="display: none;" aria-hidden="true">
-                                <div class="modal-dialog modal-lg">
+                                <th scope="row">{{i+1}}</th>
+                                <th scope="row">{{user.id}}</th>
+                                <td scope="row">{{user.fname+' '+user.lname}}</td>
+                                <td scope="row">{{user.email}}</td>
+                                <td scope="row">{{user.loanAmt}}</td>
+                                <td scope="row">{{user.duration}}</td>
+                                <td scope="row">{{user.income}}</td>
+                                <td scope="row">{{user.status}}</td>
+                                <td scope="row"><a class="btn btn-primary" data-bs-toggle="modal"
+                                        href="#exampleModalToggle" role="button" style="color: black;"
+                                        (click)="currentDetail(user);status()">Show Details</a>
+                                </td>
+                                <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false"
+                                    id="exampleModalToggle" aria-labelledby="exampleModalToggleLabel" tabindex="-1"
+                                    style="display: none;" aria-hidden="true">
+                                    <div class="modal-dialog modal-lg">
 
 
-                                    <form #userdata="ngForm">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
-                                                    Info
-                                                </h1>
-                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                    aria-label="Close"></button>
-                                            </div>
-                                            <div class="modal-body">
-                                                <div class="container text text-capitalize">
-                                                    <div class="row m-1 p-1 f-18 ">
-                                                        <div class="col ">
-                                                            Application Id : {{currentdata.id}}
-                                                            <input type="hidden" name="id" ngModel="{{currentdata.id}}">
+                                        <form #userdata="ngForm">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h1 class="modal-title fs-5" id="exampleModalToggleLabel">
+                                                        Info
+                                                    </h1>
+                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                        aria-label="Close"></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="container text text-capitalize">
+                                                        <div class="row m-1 p-1 f-18 ">
+                                                            <div class="col ">
+                                                                Application Id : {{currentdata.id}}
+                                                                <input type="hidden" name="id"
+                                                                    ngModel="{{currentdata.id}}">
+                                                            </div>
+                                                            <div class="col">
+                                                                User Id : {{currentdata.userid}}
+                                                                <input type="hidden" name="userid"
+                                                                    ngModel="{{currentdata.userid}}">
+                                                            </div>
                                                         </div>
-                                                        <div class="col">
-                                                            User Id : {{currentdata.userid}}
-                                                            <input type="hidden" name="userid"
-                                                                ngModel="{{currentdata.userid}}">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row m-1 p-1 f-18">
-                                                        <div class="col">
-                                                            Name : {{currentdata.fname+'
-                                                            '+currentdata.lname}}
-                                                        </div>
-                                                        <div class="col">
-                                                            Gender : {{currentdata.gender}}
+                                                        <div class="row m-1 p-1 f-18">
+                                                            <div class="col">
+                                                                Name : {{currentdata.fname+'
+                                                                '+currentdata.lname}}
+                                                            </div>
+                                                            <div class="col">
+                                                                Gender : {{currentdata.gender}}
 
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row m-1 p-1 f-18 ">
-                                                        <div class="col">
-                                                            Email : {{currentdata.email}}
+                                                        <div class="row m-1 p-1 f-18 ">
+                                                            <div class="col">
+                                                                Email : {{currentdata.email}}
+                                                            </div>
+                                                            <div class="col">
+                                                                Mobile No. : {{currentdata.mobile}}
+                                                            </div>
                                                         </div>
-                                                        <div class="col">
-                                                            Mobile No. : {{currentdata.mobile}}
+                                                        <div class="row m-1 p-1 f-18">
+                                                            <div class="col">
+                                                                Aadhar Number : {{currentdata.aadhar}}
+                                                            </div>
+                                                            <div class="col">
+                                                                Pan Number : {{currentdata.pan}}
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row m-1 p-1 f-18">
-                                                        <div class="col">
-                                                            Aadhar Number : {{currentdata.aadhar}}
+                                                        <div class="row m-1 p-1 f-18">
+                                                            <div class="col">
+                                                                Loan Amount : {{currentdata.loanAmt}}
+                                                            </div>
+                                                            <div class="col">
+                                                                Duration : {{currentdata.duration +" Months"}}
+                                                            </div>
                                                         </div>
-                                                        <div class="col">
-                                                            Pan Number : {{currentdata.pan}}
+                                                        <div class="row m-1 p-1 f-18">
+                                                            <div class="col">
+                                                                Income : {{currentdata.income}}
+                                                            </div>
+                                                            <div class="col">
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row m-1 p-1 f-18">
-                                                        <div class="col">
-                                                            Loan Amount : {{currentdata.loanAmt}}
+                                                        <div class="row m-1 p-1 f-18">
+                                                            <div class="col">
+                                                                Address :
+                                                                {{currentdata.address1+','+currentdata.address2}}
+                                                            </div>
+                                                            <div class="col">
+                                                                Place : {{currentdata.place}}
+                                                            </div>
                                                         </div>
-                                                        <div class="col">
-                                                            Duration : {{currentdata.duration +" Months"}}
-                                                        </div>
-                                                    </div>
-                                                    <div class="row m-1 p-1 f-18">
-                                                        <div class="col">
-                                                            Income : {{currentdata.income}}
-                                                        </div>
-                                                        <div class="col">
-                                                        </div>
-                                                    </div>
-                                                    <div class="row m-1 p-1 f-18">
-                                                        <div class="col">
-                                                            Address : {{currentdata.address1+','+currentdata.address2}}
-                                                        </div>
-                                                        <div class="col">
-                                                            Place : {{currentdata.place}}
-                                                        </div>
-                                                    </div>
 
-                                                    <div class="row m-1 p-1 f-18">
-                                                        <div class="col">
-                                                            Pincode : {{currentdata.pincode}}
+                                                        <div class="row m-1 p-1 f-18">
+                                                            <div class="col">
+                                                                Pincode : {{currentdata.pincode}}
+                                                            </div>
+                                                            <div class="col">
+                                                                State : {{currentdata.state}}
+                                                            </div>
                                                         </div>
-                                                        <div class="col">
-                                                            State : {{currentdata.state}}
+                                                        <div class="row m-1 p-1 f-18">
+                                                            <div class="col">
+                                                                Country : {{currentdata.country}}
+                                                            </div>
+                                                            <div class="col">
+                                                                Status : <button class="btn btn-warning"
+                                                                    data-bs-target="#exampleModalToggle2"
+                                                                    data-bs-toggle="modal"
+                                                                    (click)="status()">Show
+                                                                    Status</button>
+                                                            </div>
+                                                            <div class="m-1">
+                                                                <a *ngIf="wid>=90"  routerLink="/user/emiChart" data-bs-target="#exampleModalToggle"
+                                                                    data-bs-toggle="modal" style="color: black;" class="m-1 btn btn-info" (click)="setLoanid(currentdata.id)">Show EMI Calendar</a>
+                                                            </div>
                                                         </div>
-                                                    </div>
-                                                    <div class="row m-1 p-1 f-18">
-                                                        <div class="col">
-                                                            Country : {{currentdata.country}}
-                                                        </div>
-                                                        <div class="col">
-                                                            Status : <button  class="btn btn-warning"
-                                                                data-bs-target="#exampleModalToggle2"
-                                                                data-bs-toggle="modal" (click)="status();EmiCalculator()" >Show Status</button>
-                                                        </div>
-                                                    </div>
 
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-danger"
+                                                        data-bs-target="#exampleModalToggle"
+                                                        data-bs-toggle="modal">Cancel</button>
                                                 </div>
                                             </div>
-
-                                            <div class="modal-footer">
-                                                <button type="button" class="btn btn-danger"
-                                                    data-bs-target="#exampleModalToggle"
-                                                    data-bs-toggle="modal">Cancel</button>
-                                            </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div>
                                 </div>
-                            </div>
 
-                        </tr>
-                    </tbody>
-                </table>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
+
+
+
+
         </div>
-
-
-
-
     </div>
 </div>
-</div>
 <div class="model2">
-    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
-        tabindex="-1">
+    <div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="exampleModalToggle2"
+        aria-hidden="true" aria-labelledby="exampleModalToggleLabel2" tabindex="-1">
         <div class="modal-dialog modal-xl modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -189,21 +199,23 @@
                                 <li id="step-1" [ngClass]="{'blue':wid>=10}"></li>
                                 <li id="step-21" *ngIf="wid!=20" [ngClass]="{'blue':wid>=30}"></li>
                                 <li id="step-22" *ngIf="wid==20" [ngClass]="{'bg-danger':wid==20}"></li>
-                                <li id="step-31" *ngIf="wid!=40"[ngClass]="{'blue':wid>=50}"></li>
+                                <li id="step-31" *ngIf="wid!=40" [ngClass]="{'blue':wid>=50}"></li>
                                 <li id="step-32" *ngIf="wid==40" [ngClass]="{'bg-danger':wid==40}"></li>
                                 <li id="step-4" [ngClass]="{'blue':wid>=70}"></li>
-                                <li id="step-5"  [ngClass]="{'blue':wid>=90}"></li>
-                                <li id="step-6"  [ngClass]="{'bg-success':wid==100}"></li>
+                                <li id="step-5" [ngClass]="{'blue':wid>=90}"></li>
+                                <li id="step-6" [ngClass]="{'bg-success':wid==100}"></li>
                             </ul>
                             <div class="progress">
-                                <div class="progress-bar " role="progressbar" c aria-label="" [ngStyle]="{'width': wid+'%'}" 
-                                    aria-valuenow="" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar " role="progressbar" c aria-label=""
+                                    [ngStyle]="{'width': wid+'%'}" aria-valuenow="" aria-valuemin="0"
+                                    aria-valuemax="100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-warning" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back To Info</button>
+                    <button class="btn btn-warning" data-bs-target="#exampleModalToggle" data-bs-toggle="modal">Back To
+                        Info</button>
                 </div>
             </div>
         </div>

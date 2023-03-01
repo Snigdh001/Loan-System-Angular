@@ -1,0 +1,86 @@
+
+<div class="loanvalue"  >
+
+    <table class="table m-4" style="width:25rem">
+        <thead> 
+            <tr>
+                <th style="text-align: left;">Loan Summary</th>
+                <th style="text-align: right;"></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th scope="col">Loan Amount    </th>
+                <th scope="col">&#8377; {{emiDetails['loanAmt']}}</th>
+            </tr>
+            <tr>
+                <th scope="col">Annual Interest Rate </th>
+                <th scope="col">{{emiDetails['interestRate']}}%</th>
+            </tr>
+            <tr>
+                <th scope="col">Tenure (Months) </th>
+                <th scope="col">{{emiDetails['duration']}}</th>
+            </tr>
+            <tr>
+                <th scope="col">Start Date </th>
+                <th scope="col">{{emiDetails['startDate']}}</th>
+            </tr>
+            <tr>
+                <th scope="col">Monthly Payment </th>
+                <th scope="col">&#8377; {{emiDetails['emiAmt']}}</th>
+            </tr>
+            <tr>
+                <th scope="col">Total Interest on Loan  </th>
+                <th scope="col">&#8377; {{emiDetails['totalIntAmt']}}</th>
+            </tr>
+            <tr>
+                <th scope="col">No. of Emi Paid </th>
+                <th scope="col">{{emiDetails['emiPaid']}}</th>
+            </tr>
+
+            <tr>
+                <th scope="col">Total Payment Done </th>
+                <th scope="col">&#8377; {{emiDetails['emiPaid']*emiDetails['emiAmt']}}</th>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="allapplication table" style="width: 80rem; margin-left: 10%;">
+    <div class="row">
+        <div class="col-md-12">
+
+            <!--pagination-->
+            <div class=" align-items-center justify-content-end mb-3">
+
+
+
+                <!--close-pagination-->
+
+                <table class="table table">
+                    <thead>
+                        <tr>
+                            <th scope="col">S.No</th>
+                            <th scope="col">Date Due</th>
+                            <th scope="col">EMI Amount</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let user of monthRange; let i=index">
+                            <td scope="row">{{i+1}}</td>
+                            <td scope="row">{{user}}</td>
+                            <td scope="row">{{emiDetails['emiAmt']}}</td>
+                            <td scope="row">{{statusRange[i]}}</td>
+                            <td scope="row"><button class="btn btn-primary " *ngIf="!EmiStatus[i]"  (click)="paidStatus(i,emiDetails['id'])" > Pay Now</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>

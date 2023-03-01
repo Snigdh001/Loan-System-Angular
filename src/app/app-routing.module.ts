@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { LoanApplicationComponent } from './loan-application/loan-application.component';
 import { ApplyloanComponent } from './applyloan/applyloan.component';
 import { UserLoanApplicationComponent } from './user-loan-application/user-loan-application.component';
+import { EmiChartComponent } from './emi-chart/emi-chart.component';
 
 export const routes: Routes = [
   {
@@ -44,6 +45,12 @@ export const routes: Routes = [
     canActivate:[AuthGuard],
     data: {role: 'user'},
     component:UserdashboardComponent,
+  },
+  {
+    path:'user/emiChart',
+    canActivate:[AuthGuard],
+    data: {role: 'user'},
+    component:EmiChartComponent,
   },
   {
     path:'user/applyloan',

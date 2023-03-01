@@ -46,8 +46,20 @@ export class AuthService {
   LoanApplicationById(userId:string) {
     return  this.http.get<[]>(this.baseurl+`/allApplicationById?userId=${userId}`)
   }
-  emiCalculator(loanAmt:string,interest_rate:string,duration_years:string)
+  emiCalculator(loanAmt:string,interest_rate:string="10",duration_years:number)
   {
-    return this.http.get<any>('https://api.api-ninjas.com/v1/mortgagecalculator?loan_amount=100000&interest_rate=10&duration_years=10',{headers:{'X-Api-Key': 'jLhm4ii3StYojHxIHNN0ag==38QUXaD94DNQEPcO'}})
+    return this.http.get<any>(`https://api.api-ninjas.com/v1/mortgagecalculator?loan_amount=${loanAmt}&interest_rate=${interest_rate}&duration_years=${duration_years}`,{headers:{'X-Api-Key': 'jLhm4ii3StYojHxIHNN0ag==38QUXaD94DNQEPcO'}})
+  }
+  setEmiDetails(loanid:number)
+  {
+    return this.http.get<any>(this.baseurl+`/EmiDetails?loanid=${loanid}`)
+  }
+  setEmiPaidStatus(id:number)
+  {
+    return this.http.get<boolean>(this.baseurl+`/EmiPaid?id=${id}`)
+  }
+  emiChart(data:any)
+  { 
+    return this.http.post<any>(this.baseurl+`/EmiChart`,data)
   }
 }

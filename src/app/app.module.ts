@@ -17,6 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoanApplicationComponent } from './loan-application/loan-application.component';
 import { ApplyloanComponent } from './applyloan/applyloan.component';
 import { UserLoanApplicationComponent } from './user-loan-application/user-loan-application.component';
+import { EmiChartComponent } from './emi-chart/emi-chart.component';
 
 
 
@@ -32,6 +33,7 @@ import { UserLoanApplicationComponent } from './user-loan-application/user-loan-
     LoanApplicationComponent,
     ApplyloanComponent,
     UserLoanApplicationComponent,
+    EmiChartComponent,
   ],
   
   imports: [

@@ -74,6 +74,20 @@ export const SessionInterface = {
   email: "",
   mobile: "",
 }
+export const emiDetailsRes = {
+
+  id: 0,
+  loanid: 0,
+  userid: 0,
+  loanAmt: 0,
+  duration: 0,
+  emiAmt:0.0,
+  emiPaid:0,
+  interestRate:0.0,
+  startDate:"",
+  totalIntAmt:0.0,
+  totalAmt:0.0,
+}
 export interface allUserApi {
   status: number,
   error: string,

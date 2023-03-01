@@ -3,6 +3,7 @@ import { allApplicationApi, allApplicationRes, allUserApi } from '../Interface';
 import { AuthService } from '../services/auth.service';
 import { ExportToCsv } from 'export-to-csv';
 import { NgForm } from '@angular/forms';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-loan-application',
@@ -27,6 +28,7 @@ export class LoanApplicationComponent {
   pageRange: Array<number> = []
   key = ""
   currentdata:typeof allApplicationRes=allApplicationRes
+  calculatedEmi:any
   
   noOfPage() // Generating Array for Pagination
   {
@@ -78,10 +80,35 @@ export class LoanApplicationComponent {
   }
    UpdateStatus(data:NgForm)
   {
-
-     this.auth.updateStatus(data).subscribe(res =>{this.ngOnInit()})
+    console.log(this.currentdata)
+    console.log(data)
     
+     this.auth.updateStatus(data).subscribe(res =>{this.ngOnInit()})
+     if(data['status']==='disbursed')
+     {  let year=+(this.currentdata['duration'])/12
+        // console.log(year)
+        const data={
+          'userid':+this.currentdata['userid'],
+          'loanid':+this.currentdata['id'],
+          'loanAmt':+this.currentdata['loanAmt'],
+          'interestRate':10,
+          'totalAmt':0 ,
+          'totalIntAmt':0,
+          'startDate':formatDate(Date.now(),'YYYY-MM-dd','en-US'),
+          'emiAmt':0,
+          'duration':+this.currentdata['duration'],
+          'emiPaid':0,
+        }
+        this.auth.emiCalculator(this.currentdata['loanAmt'],'10',year).subscribe(res =>{console.log(res),
+          data['totalIntAmt']=res.total_interest_paid,
+          data['emiAmt']=res.monthly_payment.mortgage,
+          data['totalAmt']=res.annual_payment.total
+          this.auth.emiChart(data).subscribe(res =>{console.log(res)})
+        })
+        
+     }
   }
+
   currentDetail(data:typeof allApplicationRes){
     this.currentdata=data
   }

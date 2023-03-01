@@ -1,5 +1,5 @@
-<header class="bg-dark border-bottom shadow-sm">
-    <div class="container ">
+<header class="bg-dark border-bottom shadow-sm" style="width:100%">
+    <div class="container">
         <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 text-capitalize " >
             <h5 class="my-0 mr-md-auto font-weight-normal"><img src="../assets/images/loanlogo.png" [routerLink]="[this.sessionDetails.role]" style="height: 80px; border-radius: 100%;"></h5>
             <div class=" m-2 p-2"><a *ngIf="this.sessionDetails.loginStatus" style="text-decoration:  none; color: aliceblue;font-size: 25px;" data-bs-toggle="modal" data-bs-target="#staticBackdrop">{{this.sessionDetails.name}}</a></div>
