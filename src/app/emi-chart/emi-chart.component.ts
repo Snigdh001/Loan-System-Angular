@@ -36,7 +36,9 @@ export class EmiChartComponent implements OnInit {
       if(i<emipaid)
       {
         date.setMonth(date.getMonth() + 1)
-        
+        // this.statusRange.push("paid")
+        // this.EmiStatus.push(true)
+        // this.monthRange.push(date.toLocaleString().slice(0, 10))
       }
       else{
 
