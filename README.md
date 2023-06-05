@@ -25,3 +25,25 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Functionality:
+
+Login and Signup:
+
+Users can create an account and login using their credentials.
+The signup process collects necessary information such as name, email, and password.
+Existing users can log in with their registered email and password.
+Apply for Loan:
+
+Authenticated users can apply for a loan through the application.
+The loan application process collects relevant details such as loan amount, purpose, and repayment period.
+Users may need to provide additional information like income details, employment history, and personal identification.
+Listing of EMI (Equated Monthly Installments):
+
+Once the loan is approved, users can view a listing of their EMI schedule.
+The EMI listing provides information on installment amounts, due dates, and remaining balance.
+Users can track their loan repayment progress through the EMI listing.
+Full Details of Loan:
+
+Users can access comprehensive information about their loan.
+The loan details page displays loan amount, interest rate, repayment period, and any applicable fees.
+Users can also view their repayment history, including the amount paid, outstanding balance, and any late fees incurred.
